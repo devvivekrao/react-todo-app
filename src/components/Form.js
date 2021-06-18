@@ -8,15 +8,20 @@ function Form( { inputText, setInputText, todos , setTodos, setStatus } ){
     };
     const submitTodo = (event) =>{
         event.preventDefault();
-        setTodos([
-            ...todos,
-            {
-                id: uuidv4(),
-                text: inputText,
-                completed: false
-            }
-        ]);
-        setInputText("");
+        if( inputText === ''){
+            alert('Todo list can\'t be empty');
+        }
+        else{
+            setTodos([
+                ...todos,
+                {
+                    id: uuidv4(),
+                    text: inputText,
+                    completed: false
+                }
+            ]);
+            setInputText("");
+        }
     };
     const setStatusHandler = (event) =>{
         setStatus(event.target.value);
